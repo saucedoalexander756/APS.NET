@@ -1,0 +1,24 @@
+# --- Visual Studio (IMPORTANTE: Esto soluciona tu error) ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- Archivos de Compilación (Basura generada al compilar) ---
+[Bb]in/
+[Oo]bj/
+
+# --- Visual Studio Code (si lo usas) ---
+.vscode/
+
+# --- Archivos de Logs ---
+*.log
+
+# --- Archivos de Sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Seguridad (Opcional pero recomendado) ---
+# Evita subir tus contraseñas locales de desarrollo
+appsettings.Development.json

@@ -1,0 +1,6 @@
+@ApiVete_HostAddress = http://localhost:5185
+
+GET {{ApiVete_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
