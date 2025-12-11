@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ApiVete.Models; 
+using ApiVete.Models;
 
 namespace ApiVete.Context
 {
@@ -13,16 +13,19 @@ namespace ApiVete.Context
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<Consulta> Consultas { get; set; }
 
-        
+        // Nuevo DbSet para usuarios
+        public DbSet<Usuario> Usuarios { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-         
+
             modelBuilder.Entity<Cliente>(entity =>
             {
-                entity.ToTable("cat_clientes"); 
-                entity.HasKey(e => e.eCodCliente); 
+                entity.ToTable("cat_clientes");
+                entity.HasKey(e => e.eCodCliente);
             });
 
             // 2. Configuración de MASCOTAS
@@ -35,25 +38,34 @@ namespace ApiVete.Context
                 // entity.HasOne(d => d.Cliente).WithMany().HasForeignKey(p => p.eCodCliente);
             });
 
-            
+
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.ToTable("cat_productos");
                 entity.HasKey(e => e.eCodProducto);
             });
 
-           
+
             modelBuilder.Entity<Venta>(entity =>
             {
                 entity.ToTable("cat_ventas");
                 entity.HasKey(e => e.eCodVenta);
             });
 
-            
+
             modelBuilder.Entity<Consulta>(entity =>
             {
                 entity.ToTable("ret_consultas");
                 entity.HasKey(e => e.eCodConsulta);
+            });
+
+            // Configuración de Usuarios
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.ToTable("seg_usuarios");
+                entity.HasKey(e => e.eCodUsuario);
+                entity.Property(e => e.Username).IsRequired();
+                entity.Property(e => e.PasswordHash).IsRequired();
             });
         }
     }

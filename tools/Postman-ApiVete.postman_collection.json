@@ -1,0 +1,103 @@
+{
+  "info": {
+    "name": "ApiVete",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7052"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"Username\": \"admin\",\n  \"Password\": \"Password123!\",\n  \"Role\": \"Admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "Auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"Username\": \"admin\",\n  \"Password\": \"Password123!\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "Auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Clientes - Get All",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/Clientes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "Clientes"]
+        }
+      }
+    },
+    {
+      "name": "Clientes - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"Nombre\": \"Juan\",\n  \"iApellido\": \"Pérez\",\n  \"iTelefono\": \"555-1234\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Clientes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "Clientes"]
+        }
+      }
+    }
+  ]
+}
